@@ -274,7 +274,7 @@ export class LightboxComponent implements AfterViewInit, OnDestroy {
     const newHeight = imageHeight + this._cssValue.containerTopPadding + this._cssValue.containerBottomPadding +
       this._cssValue.imageBorderWidthTop + this._cssValue.imageBorderWidthBottom;
 
-    if (oldWidth !== newWidth || oldHeight !== newHeight) {
+    if (Math.abs(oldWidth - newWidth) + Math.abs(oldHeight - newHeight) > 5) {
       this._rendererRef.setElementStyle(this._outerContainerElem.nativeElement, 'width', `${newWidth}px`);
       this._rendererRef.setElementStyle(this._outerContainerElem.nativeElement, 'height', `${newHeight}px`);
 
